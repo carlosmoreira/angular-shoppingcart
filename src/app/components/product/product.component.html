@@ -1,0 +1,29 @@
+<figure class="card card-product">
+  <div class="img-wrap">
+    <img
+      src="https://dummyimage.com/210x220/92d9eb/fff"
+      alt=""
+      style="margin-top:5px;"
+    />
+  </div>
+  <figcaption class="info-wrap">
+    <h4 class="title">{{ product.name }}</h4>
+    <p class="desc">{{ product.description }}</p>
+    <div class="rating-wrap">
+      <div class="label-rating">{{ product.reviews }} reviews</div>
+      <div class="label-rating">{{ product.totalOrders }} orders</div>
+    </div>
+    <!-- rating-wrap.// -->
+  </figcaption>
+  <div class="bottom-wrap text-center">
+    <div class="price-wrap h5">
+      <span class="price-new">{{ product.price }}</span>
+      <del class="price-old">{{ product.salePrice }}</del>
+    </div>
+
+    <a href="#" class="btn btn-sm btn-primary">Order Now</a>
+
+    <!-- price-wrap.// -->
+  </div>
+  <!-- bottom-wrap.// -->
+</figure>

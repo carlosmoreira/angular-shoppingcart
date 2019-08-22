@@ -3,27 +3,29 @@
   <ul class="list-group">
     <li
       class="list-group-item"
-      *ngFor="let product of shoppingCartService.products"
-    >
+      *ngFor="let product of shoppingCartService.products">
       <div class="row">
         <div class="col-md-8">
-          {{ product.name }}
+          ({{product.quantity}}x){{ product.product.name }}
         </div>
         <div class="col-md-4">
-          {{ product.salePrice }}
+          {{ productHelper.getProductPrice(product.product) }}
         </div>
       </div>
     </li>
 
-    <li class="list-group-item">
+    <li *ngIf="shoppingCartService.products" class="list-group-item">
       <div class="row">
         <div class="col-md-8">
           <strong>Total</strong>
         </div>
         <div class="col-md-4">
-          <strong>{{ shoppingCartService.getTotal() }}</strong>
+          <strong>{{ shoppingCartService.getTotal() | currency }}</strong>
         </div>
       </div>
+    </li>
+    <li class="list-group-item" *ngIf="shoppingCartService.products.length < 1">
+      <p class="alert alert-warning">Please add items to the cart</p>
     </li>
   </ul>
 </section>

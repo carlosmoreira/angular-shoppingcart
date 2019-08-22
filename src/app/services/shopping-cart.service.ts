@@ -1,13 +1,15 @@
 import { Injectable } from "@angular/core";
 import Product from "../models/Product";
+import ShoppingCartProduct from '../models/CartProduct';
+import { ProductHelperService } from './product-helper.service';
 
 @Injectable({
   providedIn: "root"
 })
 export class ShoppingCartService {
-  products: Product[] = [];
+  products: ShoppingCartProduct[] = [];
 
-  constructor() {}
+  constructor(private productHelper : ProductHelperService) {}
 
   /**
    *
@@ -15,7 +17,12 @@ export class ShoppingCartService {
    *
    */
   addProduct(product: Product): void {
-    this.products.push(product);
+    let foundProductInCart = this.products.find((productItr) => product.id === productItr.product.id);
+    if(foundProductInCart){
+      foundProductInCart.quantity++;
+    }else{
+      this.products.push(new ShoppingCartProduct(product));
+    } 
   }
 
   removeProduct(id: number) {
@@ -23,6 +30,10 @@ export class ShoppingCartService {
   }
 
   getTotal() {
-    return "Total";
+      let total = 0;
+      this.products.forEach((cartProduct) => {
+        total += cartProduct.quantity * this.productHelper.getProductPrice(cartProduct.product);
+      });    
+      return total;
   }
 }

@@ -1,20 +1,28 @@
 <section id="shoppingCart">
-  <h5>Shopping Cart</h5>
+  <h5><i class="fa fa-shopping-cart"></i> Shopping Cart</h5>
   <ul class="list-group">
     <li
       class="list-group-item"
-      *ngFor="let product of shoppingCartService.products">
+      *ngFor="let product of shoppingCartService.products"
+    >
       <div class="row">
         <div class="col-md-8">
-          ({{product.quantity}}x){{ product.product.name }}
+          ({{ product.quantity }}x) - {{ product.product.name }}
+          <div>
+            <small
+              class="text-danger cursor-pointer"
+              (click)="shoppingCartService.removeProduct(product.product.id)"
+            >
+              <i class="fa fa-remove"></i> Remove</small
+            >
+          </div>
         </div>
         <div class="col-md-4">
-          {{ productHelper.getProductPrice(product.product) }}
+          {{ productHelper.getProductPrice(product.product) | currency }}
         </div>
       </div>
     </li>
-
-    <li *ngIf="shoppingCartService.products" class="list-group-item">
+    <li *ngIf="shoppingCartService.products.length > 0" class="list-group-item">
       <div class="row">
         <div class="col-md-8">
           <strong>Total</strong>
@@ -25,7 +33,18 @@
       </div>
     </li>
     <li class="list-group-item" *ngIf="shoppingCartService.products.length < 1">
-      <p class="alert alert-warning">Please add items to the cart</p>
+      <p class="alert alert-warning">No items in shopping cart.</p>
+    </li>
+    <li
+      class="list-group-item text-center"
+      *ngIf="shoppingCartService.products.length > 0"
+    >
+      <a
+        routerLink="/checkout"
+        routerLinkActive="active"
+        class="btn btn-success"
+        >Checkout!</a
+      >
     </li>
   </ul>
 </section>

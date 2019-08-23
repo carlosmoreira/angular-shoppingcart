@@ -17,11 +17,17 @@
   </figcaption>
   <div class="bottom-wrap text-center">
     <div class="price-wrap h5">
-      <span class="price-new" style="color:rgb(121, 182, 29)">{{ productHelper.getProductPrice(product) | currency    }}</span>
-      <del class="price-old" *ngIf="product.salePrice" style="color:red">{{ product.price | currency }}</del>
+      <span class="price-new" style="color:rgb(121, 182, 29)">{{
+        productHelper.getProductPrice(product) | currency
+      }}</span>
+      <del class="price-old" *ngIf="product.salePrice" style="color:red">{{
+        product.price | currency
+      }}</del>
     </div>
 
-    <button class="btn btn-sm btn-primary" (click)="addToShoppingCart(product)">Order Now</button>
+    <button class="btn btn-sm btn-primary" (click)="addToShoppingCart(product)">
+      <i class="fa fa-shopping-cart">` </i>Add To Cart
+    </button>
 
     <!-- price-wrap.// -->
   </div>

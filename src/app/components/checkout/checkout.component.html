@@ -1,0 +1,120 @@
+<section>
+  <div class="container">
+    <div class="col-md-6">
+      <form
+        novalidate
+        [formGroup]="checkoutForm"
+        (ngSubmit)="submitCheckoutForm()"
+      >
+        <div class="form-group">
+          <label for="fullName" class="is-invalid">Full Name</label>
+          <input
+            id="fullName"
+            type="text"
+            name="fullName"
+            [class.is-invalid]="
+              checkoutForm.controls['fullName'].invalid &&
+              (checkoutForm.controls['fullName'].dirty ||
+                checkoutForm.controls['fullName'].touched)
+            "
+            class="form-control"
+            formControlName="fullName"
+            required
+          />
+
+          <br />
+          <div formArrayName="contactNumbers">
+            <h4>
+              Contact Numbers
+              <i class="fa fa-plus-circle" (click)="addContactNumber()"></i>
+            </h4>
+
+            <div
+              *ngFor="
+                let contactNumber of contactNumbers.controls;
+                let i = index
+              "
+            >
+              <label for="">
+                Contact Number ({{ i + 1 }})
+                <input type="text" [formControlName]="i" class="form-control" />
+              </label>
+            </div>
+          </div>
+
+          <!-- <label for="notes">Notes</label>
+          <textarea
+            name="notes"
+            id="notes"
+            cols="30"
+            rows="6"
+            class="form-control"
+          ></textarea> -->
+
+          <!-- <label for="deliveryType">Delivery Type</label>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="exampleRadios"
+              id="exampleRadios1"
+              value="option1"
+              checked
+            />
+            <label class="form-check-label" for="exampleRadios1">
+              1 Day
+            </label>
+          </div> -->
+
+          <!-- <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="exampleRadios"
+              id="exampleRadios1"
+              value="option1"
+              checked
+            />
+            <label class="form-check-label" for="exampleRadios1">
+              3 Day
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="exampleRadios"
+              id="exampleRadios1"
+              value="option1"
+              checked
+            />
+            <label class="form-check-label" for="exampleRadios1">
+              8 Day
+            </label>
+          </div> -->
+        </div>
+        <!-- <div class="form-group"></div>
+          <label for="wrapped">Would you want the products wrapped?</label>
+          <br />
+          <input type="checkbox" name="wrapped" id="wrapped" /> Yes I would!
+        </div> -->
+        <!-- <div class="form-group">
+          <label for="wrapped"
+            >I couldn't think of a question for this dropdown.</label
+          >
+          <select name="" id="" class="form-control">
+            <option value="">:::SELECT:::</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div> -->
+        <div class="form-group">
+          <button [disabled]="!checkoutForm.valid" class="btn btn-success">
+            Submit!
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

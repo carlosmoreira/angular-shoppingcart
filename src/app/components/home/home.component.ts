@@ -1,7 +1,5 @@
 import { ShoppingCartService } from "./../../services/shopping-cart.service";
-import { PRODUCTS } from "./../../mocks/ProductsMock";
 import { Component, OnInit } from "@angular/core";
-import Product from "../../models/Product";
 
 @Component({
   selector: "app-home",
@@ -9,11 +7,7 @@ import Product from "../../models/Product";
   styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
-  products: Product[];
-
   constructor() {}
 
-  ngOnInit() {
-    this.products = PRODUCTS;
-  }
+  ngOnInit() {}
 }

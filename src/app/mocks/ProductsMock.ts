@@ -27,5 +27,14 @@ export const PRODUCTS: Product[] = [
     salePrice: 9.34,
     reviews: 354,
     totalOrders: 234
+  },
+  {
+    id: 4,
+    name: "Waffles",
+    description: "Lego my eggoo",
+    price: 8.65,
+    salePrice: 4.5,
+    reviews: 14,
+    totalOrders: 204
   }
 ];

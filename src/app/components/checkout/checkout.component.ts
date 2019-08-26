@@ -19,6 +19,10 @@ export class CheckoutComponent implements OnInit {
       "",
       [Validators.required, forbiddenNamesValidator(["bob", "carlos"])]
     ],
+    notes: this.fb.control(""),
+    deliveryType: this.fb.control(""),
+    wrapped: this.fb.control(false),
+    randomQuestion: this.fb.control(""),
     contactNumbers: this.fb.array([this.fb.control("")]) //By default will have one
   });
 
@@ -27,10 +31,6 @@ export class CheckoutComponent implements OnInit {
   ngOnInit() {}
 
   submitCheckoutForm() {
-    this.checkoutForm.patchValue({
-      fullName: "Carlos",
-      test: "This should not appear"
-    });
     console.log(this.checkoutForm.value);
   }
 

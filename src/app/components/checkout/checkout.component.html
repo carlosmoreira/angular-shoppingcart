@@ -42,73 +42,94 @@
             </div>
           </div>
 
-          <!-- <label for="notes">Notes</label>
+          <label for="notes">Notes</label>
           <textarea
             name="notes"
             id="notes"
             cols="30"
             rows="6"
             class="form-control"
-          ></textarea> -->
+            formControlName="notes"
+            required
+            [class.is-invalid]="
+              checkoutForm.controls['notes'].invalid &&
+              (checkoutForm.controls['notes'].dirty ||
+                checkoutForm.controls['notes'].touched)
+            "
+          ></textarea>
 
-          <!-- <label for="deliveryType">Delivery Type</label>
+          <label for="deliveryType">Delivery Type</label>
           <div class="form-check">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="exampleRadios"
-              id="exampleRadios1"
-              value="option1"
-              checked
-            />
-            <label class="form-check-label" for="exampleRadios1">
+            <label class="form-check-label" for="1d">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="deliveryType"
+                id="1d"
+                value="1"
+                formControlName="deliveryType"
+                [class.is-invalid]="
+                  checkoutForm.controls['deliveryType'].invalid &&
+                  (checkoutForm.controls['deliveryType'].dirty ||
+                    checkoutForm.controls['deliveryType'].touched)
+                "
+              />
               1 Day
             </label>
-          </div> -->
-
-          <!-- <div class="form-check">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="exampleRadios"
-              id="exampleRadios1"
-              value="option1"
-              checked
-            />
-            <label class="form-check-label" for="exampleRadios1">
-              3 Day
+            <br />
+            <label class="form-check-label" for="2d">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="deliveryType"
+                id="2d"
+                value="2"
+                formControlName="deliveryType"
+                [class.is-invalid]="
+                  checkoutForm.controls['deliveryType'].invalid &&
+                  (checkoutForm.controls['deliveryType'].dirty ||
+                    checkoutForm.controls['deliveryType'].touched)
+                "
+              />
+              2 Days
             </label>
           </div>
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="exampleRadios"
-              id="exampleRadios1"
-              value="option1"
-              checked
-            />
-            <label class="form-check-label" for="exampleRadios1">
-              8 Day
-            </label>
-          </div> -->
         </div>
-        <!-- <div class="form-group"></div>
-          <label for="wrapped">Would you want the products wrapped?</label>
-          <br />
-          <input type="checkbox" name="wrapped" id="wrapped" /> Yes I would!
-        </div> -->
-        <!-- <div class="form-group">
+        <div class="form-group">
           <label for="wrapped"
+            >Would you want the products wrapped?
+            <br />
+            <input
+              formControlName="wrapped"
+              type="checkbox"
+              name="wrapped"
+              id="wrapped"
+            />
+            Yes I would!
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="randomQuestion"
             >I couldn't think of a question for this dropdown.</label
           >
-          <select name="" id="" class="form-control">
+          <select
+            required
+            formControlName="randomQuestion"
+            name="randomQuestion"
+            id="randomQuestion"
+            class="form-control"
+            [class.is-invalid]="
+              checkoutForm.controls['randomQuestion'].invalid &&
+              (checkoutForm.controls['randomQuestion'].dirty ||
+                checkoutForm.controls['randomQuestion'].touched)
+            "
+          >
             <option value="">:::SELECT:::</option>
             <option value="1">One</option>
             <option value="2">Two</option>
             <option value="3">Three</option>
           </select>
-        </div> -->
+        </div>
         <div class="form-group">
           <button [disabled]="!checkoutForm.valid" class="btn btn-success">
             Submit!

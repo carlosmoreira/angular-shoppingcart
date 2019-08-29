@@ -1,6 +1,9 @@
+import { HttpClient } from "@angular/common/http";
+
 import { Component, OnInit, Input } from "@angular/core";
 import Product from "../../models/Product";
 import { PRODUCTS } from "../../mocks/ProductsMock";
+import { map } from "rxjs/operators";
 
 @Component({
   selector: "products",
@@ -10,7 +13,7 @@ import { PRODUCTS } from "../../mocks/ProductsMock";
 export class ProductsComponent implements OnInit {
   products: Product[];
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit() {
     this.products = PRODUCTS;

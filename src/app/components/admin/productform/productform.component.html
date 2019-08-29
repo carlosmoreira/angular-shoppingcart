@@ -1,0 +1,64 @@
+<!-- description: "Tasty Chicken",
+price: 5.65,
+salePrice: 4.34,
+reviews: 454, -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <app-topmenu></app-topmenu>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h4>Add Product</h4>
+      <form [formGroup]="productForm" (ngSubmit)="submitSaveProduct()">
+        <div class="row">
+          <div class="col-md">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="name"
+                placeholder="Product Name"
+              />
+              <label for="price">
+                Price
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="price"
+                placeholder="Product Name"
+              />
+              <label for="Sale Price">Sales Price</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="salePrice"
+                placeholder="New Price if there is a sale on the product"
+              />
+              <button class="btn btn-success mt-2">
+                Add Product
+              </button>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea
+                formControlName="description"
+                name="description"
+                id="description"
+                cols="30"
+                rows="10"
+                class="form-control"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

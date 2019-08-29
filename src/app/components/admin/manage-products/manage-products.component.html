@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <app-topmenu></app-topmenu>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md">
+      <h4>Manage Products</h4>
+
+      <p *ngIf="loading">Loading...</p>
+
+      <table
+        class="table table-striped"
+        *ngIf="products.length > 0 && !loading"
+      >
+        <thead>
+          <tr>
+            <th>Product - Sale Price</th>
+            <th>Price</th>
+            <th>Sale Price</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td>{{ product.name }}</td>
+            <td>
+              {{ product.price | currency }}
+            </td>
+            <td>
+              <span *ngIf="product.salePrice" style="color:green">
+                {{ product.salePrice | currency }}</span
+              >
+              <span *ngIf="!product.salePrice" style="color:red">No Sale</span>
+            </td>
+            <td>
+              <a routerLink="/admin/products/{{ product.id }}">Edit</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
